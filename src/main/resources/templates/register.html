@@ -1,20 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link href="http://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="background-image">
 <link th:href="@{/css/style.css}" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
 </head>
 <body>
-<form action="/register" method="post">
-<!--    //zrob to w pionie-->
-    <label>E-mail:</label>
-    <input type="email" name="email">
-    <label>Password:</label>
-    <input type="password" name="password">
-    <label>Password repeat:</label>
-    <input type="password" name="passwordRepeat">
-    <input type="submit" value="Submit">
+<div class="register-container">
+    <form action="/register" method="post" class="register-form">
+        <h1>Register</h1>
+        <label>E-mail:</label>
+        <input type="email" name="email" class="register">
+
+        <label>Password:</label>
+        <input type="password" name="password" class="register">
+
+        <label>Password repeat:</label>
+        <input type="password" name="passwordRepeat" class="register">
+
+        <input type="submit" value="Submit">
+
 </form>
+</div>
 </body>
 </html>
