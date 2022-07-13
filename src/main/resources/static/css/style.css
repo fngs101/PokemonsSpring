@@ -1,3 +1,10 @@
+html, body {
+  margin: 0;
+  height:100%;
+  width:100%;
+  padding:0;
+}
+
 .index {
 background-image: url("/images/index.jpg");
 height: 100%;
@@ -6,32 +13,62 @@ height: 100%;
 -o-background-size: cover;
 background-size: cover;
 background-position: center center;
-transition: background-image 0.2s ease-in-out;
 }
 
 .welcometext {
 
   text-align: center;
-  font-size: 20px;
-  line-height: 100px;
-  letter-spacing: 2px;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  line-height: 80px;
+  letter-spacing: 6px;
+  color: rgb(255, 203, 5);
+  font-family: 'Pokemon Solid', sans-serif;
   text-transform: uppercase;
   opacity: 0;
-  animation: ani2 3s ease-out forwards;
+  animation: ani1 2s ease-out forwards;
 }
 
 .welcomebox {
-  width: 90%;
   max-width: 800px;
-  background-color: rgb(255, 255, 255, 0.3);
+  background-color: rgb(42, 117, 187, 0.5);
   opacity: 0;
-  padding: 1px;
-  animation: ani2 2s ease-out forwards;
-  margin: auto;
+  padding: 20px;
+  animation: ani1 2s ease-out forwards;
+  border-radius: 0.6em;
+  border: 3px solid rgb(255, 203, 5);
 }
 
-@keyframes ani2 {
+.welcomeboxcontainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+a.button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+  color: rgb(255, 203, 5);
+  border-radius: 0.6em;
+  border: 2px solid rgb(255, 203, 0.6);
+  font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: all 150ms ease-out;
+  height: 70px;
+  display: inline-flex;
+  align-items:flex-end;
+
+}
+
+a.button:hover {
+  background-color: rgb(42, 117, 187, 0.8);
+  box-shadow: 0 0 3px 3px rgb(255, 203, 5);
+}
+
+@keyframes ani1 {
   100%{
     opacity: 1;
   }
