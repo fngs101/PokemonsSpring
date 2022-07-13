@@ -71,14 +71,11 @@ a.button:hover {
 }
 
 .register-container {
-	background:rgba(58,63,68,0.5);
-  border-radius: 5px;
-  box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
   width:450px;
-  height: 500px;
+  height: 550px;
   display: flex;
-  border: 1px solid black;
   margin: auto;
+
 }
 
 .register-form {
@@ -87,23 +84,57 @@ a.button:hover {
   justify-content: center;
   width: 100%;
   align-items: center;
-  background-color: whitesmoke;
+  background-color: rgb(42, 117, 187, 0.5);
+  border-radius: 3%;
+  border: 3px solid rgb(255, 203, 5);
+
 }
 
 .register-form h1 {
-  font-size: 15px;
+  font-size: 25px;
   font-family: 'Pokemon Solid', sans-serif;
   letter-spacing: 6px;
-  margin: 40px;
+  margin: 10px;
+  color: rgb(255, 203, 5);
+}
+.register-form label {
+  font-size: 15px;
+  font-family: 'Pokemon Solid', sans-serif;
+  letter-spacing: 5px;
+  color: rgb(255, 203, 5);
 }
 
 .register {
   padding: 12px;
   width: 65%;
   margin: 15px;
-  border: 1px solid black;
-  /* outline: none; */
+  border: 1px solid rgb(255, 203, 5);
   border-radius: 20px;
+  background-color: rgb(42, 117, 187, 0.6);
+}
+
+input[type=submit]  {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+  color: rgb(255, 203, 5);
+  border-radius: 0.6em;
+  border: 2px solid rgb(255, 203, 0.6);
+  font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: all 150ms ease-out;
+  height: 70px;
+  display: inline-flex;
+  align-items:flex-end;
+  background-color: rgb(42, 117, 187, 0.5);
+}
+
+input[type=submit]:hover {
+  background-color: rgb(42, 117, 187, 0.8);
+  box-shadow: 0 0 3px 3px rgb(255, 203, 5);
+  cursor: pointer;
 }
 
 @keyframes ani1 {
