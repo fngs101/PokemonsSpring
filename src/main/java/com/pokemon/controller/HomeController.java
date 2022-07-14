@@ -17,7 +17,7 @@ public class HomeController
 //    }
 
     @GetMapping("/")
-    public String getHomePageString()
+    public String getHomePage()
     {
         return "index";
     }
