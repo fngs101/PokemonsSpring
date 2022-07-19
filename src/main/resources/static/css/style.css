@@ -5,6 +5,9 @@ html, body {
   padding:0;
   display: flex;
   justify-content: center;
+  color: rgb(255, 203, 5);
+  font-family: 'Pokemon Solid', sans-serif;
+  text-transform: uppercase;
 }
 
 .background-image {
@@ -23,22 +26,14 @@ background-position: center center;
   font-size: 30px;
   line-height: 80px;
   letter-spacing: 6px;
-  color: rgb(255, 203, 5);
-  font-family: 'Pokemon Solid', sans-serif;
-  text-transform: uppercase;
   opacity: 0;
   animation: ani1 2s ease-out forwards;
 }
 
 .welcomebox {
   max-width: 800px;
-  background-color: rgb(42, 117, 187, 0.5);
-  opacity: 0;
-  padding: 20px;
-  animation: ani1 2s ease-out forwards;
-  border-radius: 0.6em;
-  border: 3px solid rgb(255, 203, 5);
 }
+
 
 .welcomeboxcontainer {
   width: 100%;
@@ -56,13 +51,11 @@ a.button {
   border-radius: 0.6em;
   border: 2px solid rgb(255, 203, 0.6);
   font-size: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
   transition: all 150ms ease-out;
   height: 70px;
-  display: inline-flex;
-  align-items:flex-end;
-
+  text-align:center;
+  width: 170px;
+  line-height: normal;
 }
 
 a.button:hover {
@@ -78,30 +71,30 @@ a.button:hover {
 
 }
 
-.register-form {
+.box{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
   align-items: center;
   background-color: rgb(42, 117, 187, 0.5);
-  border-radius: 3%;
+  border-radius: 0.6em;
   border: 3px solid rgb(255, 203, 5);
-
+  width: 100%;
+  opacity: 0;
+  animation: ani1 2s ease-out forwards;
+  padding: 20px;
 }
 
-.register-form h1 {
+.box h1 {
   font-size: 25px;
-  font-family: 'Pokemon Solid', sans-serif;
   letter-spacing: 6px;
   margin: 10px;
-  color: rgb(255, 203, 5);
+
 }
-.register-form label {
+.box label {
   font-size: 15px;
-  font-family: 'Pokemon Solid', sans-serif;
   letter-spacing: 5px;
-  color: rgb(255, 203, 5);
+
 }
 
 .register {

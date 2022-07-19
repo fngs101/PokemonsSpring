@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="register-container">
-    <form action="/register" method="post" class="register-form">
+    <form action="/register" method="post" class="box">
         <h1>Register</h1>
         <label>E-mail:</label>
         <input type="email" name="email" class="register">
@@ -19,9 +19,9 @@
         <label>Password repeat:</label>
         <input type="password" name="passwordRepeat" class="register">
 
-        <input type="submit" value="Register">
+        <input type="submit" value="Submit">
 
-</form>
+    </form>
 </div>
 <div th:text="${message}"></div>
 </body>
