@@ -3,7 +3,6 @@ package com.pokemon.controller;
 import com.pokemon.exception.RegisterServiceException;
 import com.pokemon.request.RegisterRequest;
 import com.pokemon.service.RegisterService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +18,7 @@ public class RegisterController
         this.registerService = registerService;
     }
     @GetMapping("/register")
-    public String getHomePageString()
+    public String getHomePage()
     {
         return "register";
     }
@@ -34,20 +33,13 @@ public class RegisterController
         {
             registerService.register(registerRequest);
             model.addAttribute("message", "Registration completed");
-            System.out.println("registration completed");
+            System.out.println("Registration completed");
             return "main-page";
         } catch (RegisterServiceException e)
         {
             model.addAttribute("message", e.getMessage());
-            System.out.println("registration failed");
-
-            //160
+            System.out.println("Registration failed");
+            return "register";
         }
-//strona profilu
-        //statystyki
-        //ustawienia
-        //login page
-        //kontrolery do tego i zbieraja dane serwis walidujący - nie kosmos, bo bedzie przerobka
-        return "register";
     }
 }

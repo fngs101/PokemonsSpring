@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<link href="http://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="background-image">
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+</head>
+<body>
+<div class="register-container">
+    <form action="/login" method="post" class="register-form">
+        <h1>Log In</h1>
+        <label>E-mail:</label>
+        <input type="email" name="email" class="register">
+
+        <label>Password:</label>
+        <input type="password" name="password" class="register">
+
+        <input type="submit" value="Log In">
+
+    </form>
+</div>
+<div th:text="${message}"></div>
+</body>
+</html>
