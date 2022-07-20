@@ -27,18 +27,16 @@ public class RegisterController
     public String register(@RequestParam String email, String password, String passwordRepeat, Model model)
     {
         //adnotacja @RequestParam moze byc pominieta ale pozwala regulowac z dodatkiem pola "required" np. co moze byc przydatne
-        System.out.println("registering data");
         RegisterRequest registerRequest = new RegisterRequest(email, password, passwordRepeat);
         try
         {
             registerService.register(registerRequest);
-            model.addAttribute("message", "Registration completed");
-            System.out.println("Registration completed");
+            model.addAttribute("message", "Welcome to the Pokémon world, new user!");
             return "main-page";
         } catch (RegisterServiceException e)
         {
             model.addAttribute("message", e.getMessage());
-            System.out.println("Registration failed");
+
             return "register";
         }
     }

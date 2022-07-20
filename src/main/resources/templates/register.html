@@ -18,11 +18,12 @@
 
         <label>Password repeat:</label>
         <input type="password" name="passwordRepeat" class="input-box">
-
+        <div th:text="${message}"></div>
+<!--        <div th:text="${message}" class="error-message"><i class="ico">&#9747;</i></div>-->
         <input type="submit" value="Register">
 
     </form>
 </div>
-<div th:text="${message}"></div>
+
 </body>
 </html>
