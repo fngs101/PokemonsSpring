@@ -1,3 +1,8 @@
+:root {
+  --yellow: rgb(255, 203, 5);
+  --blue: rgb(42, 117, 187, 0.8);
+}
+
 html, body {
   margin: 0;
   height:100%;
@@ -47,9 +52,9 @@ a.button {
   -moz-appearance: button;
   appearance: button;
   text-decoration: none;
-  color: rgb(255, 203, 5);
+  color: var(--yellow);
   border-radius: 0.6em;
-  border: 2px solid rgb(255, 203, 0.6);
+  border: 2px solid var(--yellow);
   font-size: 20px;
   transition: all 150ms ease-out;
   height: 70px;
@@ -59,8 +64,8 @@ a.button {
 }
 
 a.button:hover {
-  background-color: rgb(42, 117, 187, 0.8);
-  box-shadow: 0 0 3px 3px rgb(255, 203, 5);
+  background-color: var(--blue);
+  box-shadow: 0 0 3px 3px var(--yellow);
 }
 
 .register-container {
@@ -76,9 +81,9 @@ a.button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(42, 117, 187, 0.5);
+  background-color: var(--blue);
   border-radius: 0.6em;
-  border: 3px solid rgb(255, 203, 5);
+  border: 3px solid var(--yellow);
   width: 100%;
   opacity: 0;
   animation: ani1 2s ease-out forwards;
@@ -97,13 +102,13 @@ a.button:hover {
 
 }
 
-.register {
+.input-box {
   padding: 12px;
   width: 65%;
   margin: 15px;
-  border: 1px solid rgb(255, 203, 5);
+  border: 1px solid var(--yellow);
   border-radius: 20px;
-  background-color: rgb(42, 117, 187, 0.6);
+  background-color: var(--blue);
 }
 
 input[type=submit]  {
@@ -111,9 +116,9 @@ input[type=submit]  {
   -moz-appearance: button;
   appearance: button;
   text-decoration: none;
-  color: rgb(255, 203, 5);
+  color: var(--yellow);
   border-radius: 0.6em;
-  border: 2px solid rgb(255, 203, 0.6);
+  border: 2px solid var(--yellow);
   font-size: 20px;
   padding-left: 10px;
   padding-right: 10px;
@@ -121,12 +126,12 @@ input[type=submit]  {
   height: 70px;
   display: inline-flex;
   align-items:flex-end;
-  background-color: rgb(42, 117, 187, 0.5);
+  background-color: var(--blue);
 }
 
 input[type=submit]:hover {
-  background-color: rgb(42, 117, 187, 0.8);
-  box-shadow: 0 0 3px 3px rgb(255, 203, 5);
+  background-color: var(--blue);
+  box-shadow: 0 0 3px 3px var(--yellow);
   cursor: pointer;
 }
 
