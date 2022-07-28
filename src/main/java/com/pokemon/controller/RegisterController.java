@@ -1,8 +1,8 @@
 package com.pokemon.controller;
 
-import com.pokemon.exception.RegisterServiceException;
+import com.pokemon.exception.AuthorizationServiceException;
 import com.pokemon.request.RegisterRequest;
-import com.pokemon.service.RegisterService;
+import com.pokemon.service.AuthorizationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class RegisterController
 {
-    private RegisterService registerService;
-    RegisterController(RegisterService registerService)
+    private AuthorizationService authorizationService;
+    RegisterController(AuthorizationService authorizationService)
     {
-        this.registerService = registerService;
+        this.authorizationService = authorizationService;
     }
     @GetMapping("/register")
     public String getHomePage()
@@ -30,10 +30,10 @@ public class RegisterController
         RegisterRequest registerRequest = new RegisterRequest(email, password, passwordRepeat);
         try
         {
-            registerService.register(registerRequest);
+            authorizationService.register(registerRequest);
             model.addAttribute("message", "Welcome to the Pokémon world, new user!");
             return "main-page";
-        } catch (RegisterServiceException e)
+        } catch (AuthorizationServiceException e)
         {
             model.addAttribute("message", e.getMessage());
 

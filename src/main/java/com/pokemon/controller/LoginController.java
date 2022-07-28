@@ -1,5 +1,6 @@
 package com.pokemon.controller;
 
+import com.pokemon.request.LoginRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,23 +18,9 @@ public class LoginController
     }
 
     @PostMapping("/login")
-    public String login()
+    public String login(String email, String password)
     {
-
-//        RegisterRequest registerRequest = new RegisterRequest(email, password, passwordRepeat);
-//        try
-//        {
-////            registerService.register(registerRequest);
-//            model.addAttribute("message", "Registration completed");
-//            System.out.println("registration completed");
-//            return "main-page";
-//        } catch (RegisterServiceException e)
-//        {
-//            model.addAttribute("message", e.getMessage());
-//            System.out.println("registration failed");
-                //return "register";
-//
-//        }
+        LoginRequest loginRequest = new LoginRequest(email, password);
 
         return "";
     }
