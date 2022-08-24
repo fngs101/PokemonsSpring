@@ -26,6 +26,7 @@ public class RegisterController
     @PostMapping("/register")
     public String register(@RequestParam String email, String password, String passwordRepeat, Model model)
     {
+        //te parametry w tej metodzie są identyczne do tych w html w register, w polu name, wtedy Spring wie skad je brac
         //adnotacja @RequestParam moze byc pominieta ale pozwala regulowac z dodatkiem pola "required" np. co moze byc przydatne
         RegisterRequest registerRequest = new RegisterRequest(email, password, passwordRepeat);
         try
