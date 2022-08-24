@@ -8,8 +8,6 @@ html, body {
   height:100%;
   width:100%;
   padding:0;
-  display: flex;
-  justify-content: center;
   color: rgb(255, 203, 5);
   font-family: 'Pokemon Solid', sans-serif;
   text-transform: uppercase;
@@ -139,4 +137,40 @@ input[type=submit]:hover {
   100%{
     opacity: 1;
   }
+}
+
+[data-tab-content] {
+    display: none;
+}
+
+.active[data-tab-content] {
+    display: block;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid black;
+}
+
+.tab {
+    cursor: pointer;
+    padding: 10px;
+
+}
+
+.tab.active {
+    background-color: #CCC;
+}
+
+.tab:hover {
+    background-color: #AAA;
+}
+
+.tab-content {
+    margin-left: 20px;
+    margin-right: 20px;
 }

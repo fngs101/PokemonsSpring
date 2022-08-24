@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link href="http://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
 <link th:href="@{/css/style.css}" rel="stylesheet">
+<script type="text/javascript" th:src="@{/js/tabs.js}" defer></script>
+
 <head>
+
     <meta charset="UTF-8">
     <title>Pokémon</title>
 
 </head>
 <body>
-<div th:text="${message}"></div>
+<ul class="tabs">
+    <li data-tab-target="#home" class="active tab">Home</li>
+    <!-- podział pod spodem na buy i sell cards dodać-->
+    <li data-tab-target="#auction-house" class="tab">Auction House</li>
+    <li data-tab-target="#my-cards" class="tab">My cards</li>
+    <li data-tab-target="#my-account" class="tab">My account</li>
+</ul>
+<div class="tab-content">
+    <div id="home" data-tab-content class="active">
+        <h1>Home</h1>
+        <p>This is home</p>
+    </div>
+    <div id="auction-house" data-tab-content>
+        <h1>Auction House</h1>
+        <p>This is Auction House</p>
+    </div>
+    <div id="my-cards" data-tab-content>
+        <h1>My cards</h1>
+        <p>This is My cards</p>
+    </div>
+    <div id="my-account" data-tab-content>
+        <h1>My account</h1>
+        <p>This is My account</p>
+    </div>
+</div>
 </body>
 </html>
