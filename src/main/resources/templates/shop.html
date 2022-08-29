@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <link href="http://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
-<link th:href="@{/css/style.css}" rel="stylesheet">
+ <link th:href="@{/css/style.css}" rel="stylesheet">
+<!--<link href="../static/css/style.css" rel="stylesheet" type="text/css">-->
 <head>
 
     <meta charset="UTF-8">
@@ -9,10 +10,21 @@
 
 </head>
 <body>
-<p1>HI THIS IS SHOP</p1>
+    <ul class="tabs">
+        <a href="/main-page"><li class="tab">Home</li></a>
+        <a href="/my-cards"><li class="tab">My cards</li></a>
+        <a href="/shop"><li class="tab">Shop</li></a>
+        <a href="/auction-house"><li class="tab">Auction House</li></a>
+        <a href="/my-account"><li class="tab">My account</li></a>
+    </ul>
+    <div class="tab-content">
+        <div id="shop">
+            <h1>Shop</h1>
+            <p>This is shop</p>
+        </div>
+    </div>    
 <form action="/shop" method="post">
 <button type="submit">Buy cards</button>
-
 </form>
 <div th:each="card:${pokemonCards}">
     <div th:text="${card.name}"></div>
