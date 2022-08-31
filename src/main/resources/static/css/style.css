@@ -69,7 +69,7 @@ a.button:hover {
 
 .register-container {
   width:450px;
-  height: 550px;
+  height: 100%;
   display: flex;
   margin: auto;
 
@@ -179,4 +179,20 @@ input[type=submit]:hover {
 ul a {
     color: inherit;
     text-decoration: none;
+}
+
+.error{
+	margin: 10px;
+	padding: 10px 10px 10px 40px;
+	background-repeat: no-repeat;
+	background-position: 15px center;
+ 	max-width: 460px;
+ 	color: red;
+    background-color: #f7cec8;
+    background-image: url("/images/error.png");
+    font-family: Helvetica, Arial, sans-serif;
+    text-transform: none;
+    border-radius: 20px;
+    border:1px solid red;
+
 }

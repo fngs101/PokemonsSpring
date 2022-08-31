@@ -10,17 +10,20 @@
 <body>
 <div class="register-container">
     <form action="/login" method="post" class="box">
+
         <h1>Log In</h1>
+
         <label>E-mail:</label>
         <input type="email" name="email" class="input-box">
 
         <label>Password:</label>
         <input type="password" name="password" class="input-box">
-
+        <div th:if="${errorMessage}" th:text="${errorMessage}" class="error"></div>
         <input type="submit" value="Log In">
+
 
     </form>
 </div>
-<div th:text="${message}"></div>
+
 </body>
 </html>

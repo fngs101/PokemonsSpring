@@ -35,7 +35,7 @@ public class LoginController
             return "main-page";
         } catch (AuthorizationServiceException e)
         {
-            model.addAttribute("message", e.getMessage());
+            model.addAttribute("errorMessage", e.getMessage());
 
             return "login";
         }
