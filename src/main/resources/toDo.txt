@@ -1,0 +1,2 @@
+1. Wykorzystac layouty html
+2. Dodac security

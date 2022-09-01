@@ -28,6 +28,7 @@
 </form>
 <div th:each="card:${pokemonCards}">
     <div th:text="${card.name}"></div>
+    <img th:src="${card.url}">
 </div>
 </body>
 </html>

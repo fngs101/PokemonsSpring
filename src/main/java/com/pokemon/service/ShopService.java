@@ -18,6 +18,6 @@ public class ShopService
 
     public List<Card> buy()
     {
-        return (List<Card>) cardRepository.findAll();
+        return cardRepository.findAll();
     }
 }
