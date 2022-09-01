@@ -1,8 +1,5 @@
 package com.pokemon.client;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 public class CardRequest
 {

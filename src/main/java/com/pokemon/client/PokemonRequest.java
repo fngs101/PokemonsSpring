@@ -1,6 +1,5 @@
 package com.pokemon.client;
 
-import com.pokemon.domain.Card;
 
 import java.util.List;
 
