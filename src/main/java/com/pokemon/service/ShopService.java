@@ -23,7 +23,7 @@ public class ShopService
         List<Card> allCards = cardRepository.findAll();
 
         Collections.shuffle(allCards);
-        List<Card> randomCards = allCards.subList(0, 1);
+        List<Card> randomCards = allCards.subList(0, 5);
 
         return randomCards;
     }
