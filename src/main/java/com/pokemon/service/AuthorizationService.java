@@ -1,22 +1,30 @@
 package com.pokemon.service;
 
 import com.pokemon.domain.Account;
+import com.pokemon.domain.PokemonCollector;
 import com.pokemon.exception.AuthorizationServiceException;
 import com.pokemon.repository.AccountRepository;
+import com.pokemon.repository.PokemonCollectorRepository;
 import com.pokemon.request.LoginRequest;
 import com.pokemon.request.RegisterRequest;
+import com.pokemon.state.SessionState;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.function.Supplier;
 
 @Service
 public class AuthorizationService
 {
     private AccountRepository accountRepository;
+    private PokemonCollectorRepository pokemonCollectorRepository;
+    @Resource(name = "getSessionState")
+    private SessionState sessionState;
 
-    public AuthorizationService(AccountRepository accountRepository)
+    public AuthorizationService(AccountRepository accountRepository, PokemonCollectorRepository pokemonCollectorRepository)
     {
         this.accountRepository = accountRepository;
+        this.pokemonCollectorRepository = pokemonCollectorRepository;
     }
 
     public void register(RegisterRequest registerRequest) throws AuthorizationServiceException
@@ -24,8 +32,12 @@ public class AuthorizationService
         validatePassword(registerRequest);
         validateEmail(registerRequest);
 
-        Account account = new Account(registerRequest.getEmail(), registerRequest.getPassword());
+        PokemonCollector pokemonCollector = new PokemonCollector();
+        pokemonCollectorRepository.save(pokemonCollector);
+
+        Account account = new Account(registerRequest.getEmail(), registerRequest.getPassword(), pokemonCollector);
         accountRepository.save(account);
+
 
     }
     private void validatePassword(RegisterRequest registerRequest) throws AuthorizationServiceException
@@ -51,6 +63,8 @@ public class AuthorizationService
     public void login(LoginRequest loginRequest) throws AuthorizationServiceException
     {
         validateLogin(loginRequest);
+        sessionState.login(accountRepository.findById(loginRequest.getEmail()).orElseThrow()); //to do jak nizej
+
     }
 
     private void validateLogin(LoginRequest loginRequest) throws AuthorizationServiceException
@@ -61,6 +75,11 @@ public class AuthorizationService
             throw new AuthorizationServiceException("Wrong email or password");
         }
 
+    }
+
+    public PokemonCollector getLoggedUserCollector()
+    {
+        return sessionState.getAccount().getPokemonCollector();
     }
 
 

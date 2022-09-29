@@ -1,24 +1,27 @@
 package com.pokemon.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class PokemonCollector
 {
     @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private int id;
     private String userName;
-    @OneToOne(targetEntity=Card.class)
+    @OneToMany(fetch=FetchType.EAGER)
     private List<Card> cardList;
-    private int pokemonCoin;
+    private int pokemonCoin = 100;
 
-    private PokemonCollector()
+
+    public PokemonCollector()
     {
 
+    }
+
+    public void addCards(List<Card> cardList)
+    {
+        this.cardList.addAll(cardList);
     }
 }

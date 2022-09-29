@@ -32,7 +32,7 @@ public class LoginController
         {
             authorizationService.login(loginRequest);
             model.addAttribute("message", "Welcome back to the Pokémon world!");
-            return "main-page";
+            return "my-account";
         } catch (AuthorizationServiceException e)
         {
             model.addAttribute("errorMessage", e.getMessage());
