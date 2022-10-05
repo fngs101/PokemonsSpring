@@ -8,6 +8,7 @@ import com.pokemon.repository.PokemonCollectorRepository;
 import com.pokemon.request.LoginRequest;
 import com.pokemon.request.RegisterRequest;
 import com.pokemon.state.SessionState;
+import groovy.util.logging.Log;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -63,13 +64,13 @@ public class AuthorizationService
     public void login(LoginRequest loginRequest) throws AuthorizationServiceException
     {
         validateLogin(loginRequest);
-        sessionState.login(accountRepository.findById(loginRequest.getEmail()).orElseThrow()); //to do jak nizej
+        sessionState.login(getAccountById(loginRequest.getEmail()));
 
     }
 
     private void validateLogin(LoginRequest loginRequest) throws AuthorizationServiceException
     {
-        Account account = accountRepository.findById(loginRequest.getEmail()).orElseThrow(()-> new AuthorizationServiceException("Wrong email or password"));
+        Account account = getAccountById(loginRequest.getEmail());
         if(!account.getPassword().equals(loginRequest.getPassword()))
         {
             throw new AuthorizationServiceException("Wrong email or password");
@@ -77,9 +78,19 @@ public class AuthorizationService
 
     }
 
+    private Account getAccountById(String id) throws AuthorizationServiceException
+    {
+        return accountRepository.findById(id).orElseThrow(()-> new AuthorizationServiceException("Wrong email or password"));
+    }
+
     public PokemonCollector getLoggedUserCollector()
     {
         return sessionState.getAccount().getPokemonCollector();
+    }
+
+    public boolean isUserLoggedIn()
+    {
+        return sessionState.getAccount() != null;
     }
 
 

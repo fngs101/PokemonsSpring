@@ -1,6 +1,7 @@
 package com.pokemon.controller;
 
 import com.pokemon.domain.Card;
+import com.pokemon.service.AuthorizationService;
 import com.pokemon.service.ShopService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,16 +14,25 @@ import java.util.List;
 public class ShopController
 {
     private ShopService shopService;
+    private AuthorizationService authorizationService;
 
-    public ShopController(ShopService shopService)
+    public ShopController(ShopService shopService, AuthorizationService authorizationService)
     {
         this.shopService = shopService;
+        this.authorizationService = authorizationService;
     }
 
     @GetMapping("/shop")
     public String getHomePage()
     {
-        return "shop";
+        if(authorizationService.isUserLoggedIn())
+        {
+            return "shop";
+        }
+        else
+        {
+            return "index";
+        }
     }
 
     @PostMapping("/shop")

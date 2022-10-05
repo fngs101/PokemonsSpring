@@ -4,7 +4,7 @@ import com.pokemon.domain.Account;
 
 import java.time.LocalDateTime;
 
-public class SessionState
+public class  SessionState
 {
     private Account account;
     private LocalDateTime dateTime;
