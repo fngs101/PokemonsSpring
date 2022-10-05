@@ -29,4 +29,14 @@ public class PokemonCollector
     {
         return cardList;
     }
+
+    public int getPokemonCoin()
+    {
+        return pokemonCoin;
+    }
+
+    public void subtractPokemonCoin(int coinsToSubtract)
+    {
+        pokemonCoin -= coinsToSubtract;
+    }
 }

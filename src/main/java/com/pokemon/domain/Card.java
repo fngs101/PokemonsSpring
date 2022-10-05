@@ -13,6 +13,7 @@ public class Card
     private String name;
 
     private String url;
+    private int price = 10;
 
     public Card(String name, String url)
     {
@@ -35,4 +36,8 @@ public class Card
         return url;
     }
 
+    public int getPrice()
+    {
+        return price;
+    }
 }

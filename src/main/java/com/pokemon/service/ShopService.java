@@ -30,11 +30,25 @@ public class ShopService
 
         Collections.shuffle(allCards);
         List<Card> randomCards = allCards.subList(0, 5);
+        int fullPrice = countPriceOfCards(randomCards);
+        System.out.println("to jest kwota kart " + fullPrice);
 
         PokemonCollector pokemonCollector = authorizationService.getLoggedUserCollector();
-        pokemonCollector.addCards(randomCards);
-        pokemonCollectorRepository.save(pokemonCollector);
+        if(pokemonCollector.getPokemonCoin() > fullPrice)
+        {
+            pokemonCollector.addCards(randomCards);
+            pokemonCollector.subtractPokemonCoin(fullPrice);
+            System.out.println(pokemonCollector.getPokemonCoin() + "TYLEEEE MA PININIEDZY TERAZ");
+            pokemonCollectorRepository.save(pokemonCollector);
+        }
 
         return randomCards;
+    }
+
+    public int countPriceOfCards(List<Card> randomCards)
+    {
+        int fullPrice = randomCards.stream().mapToInt(card -> card.getPrice()).sum();
+
+        return fullPrice;
     }
 }

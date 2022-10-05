@@ -1,6 +1,10 @@
-1. Wykorzystac layouty html
-2. Dodac security
+Todo:
+1. Dodac security
+3. Zrobic przekierowanie na logowanie po pomyslnej rejestracji
 
 Done:
 1. Dodalam przekierowanie na index w kazdym kontrolerze jesli user nie jest logged in -> authorization service metoda
 2. Dodalam wyswietlanie listy zakupionych kart w my-cards -> my cards controller w get mapping
+3. Sprawdzanie czy usera stac na karty -> dodalam do Card price stale 10, zrobilam create w properties zeby pole sie dodalo
+                                          odejmowanie zrobilam w shopservice do sprawdzenia
+                                          toDO jeszcze: jesli go nie stac, message nie stac
