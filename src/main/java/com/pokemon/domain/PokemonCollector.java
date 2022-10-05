@@ -20,8 +20,13 @@ public class PokemonCollector
 
     }
 
-    public void addCards(List<Card> cardList)
+    public void addCards(List<Card> boughtCards)
     {
-        this.cardList.addAll(cardList);
+        cardList.addAll(boughtCards);
+    }
+
+    public List<Card> getCardList()
+    {
+        return cardList;
     }
 }

@@ -1,2 +1,6 @@
 1. Wykorzystac layouty html
 2. Dodac security
+
+Done:
+1. Dodalam przekierowanie na index w kazdym kontrolerze jesli user nie jest logged in -> authorization service metoda
+2. Dodalam wyswietlanie listy zakupionych kart w my-cards -> my cards controller w get mapping

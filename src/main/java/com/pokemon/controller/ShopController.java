@@ -40,7 +40,6 @@ public class ShopController
     {
         List<Card> pokemonCards = shopService.buy();
         model.addAttribute("pokemonCards", pokemonCards);
-        System.out.println(pokemonCards.get(0).getUrl());
         return "shop";
     }
 }
