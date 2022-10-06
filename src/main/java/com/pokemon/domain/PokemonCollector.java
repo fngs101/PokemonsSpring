@@ -1,6 +1,7 @@
 package com.pokemon.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,7 +12,7 @@ public class PokemonCollector
     private int id;
     private String userName;
     @OneToMany(fetch=FetchType.EAGER)
-    private List<Card> cardList;
+    private List<Card> cardList = new ArrayList<>();
     private int pokemonCoin = 100;
 
 

@@ -33,7 +33,7 @@ public class ShopService
         int fullPrice = countPriceOfCards(randomCards);
 
         PokemonCollector pokemonCollector = authorizationService.getLoggedUserCollector();
-        if(pokemonCollector.getPokemonCoin() > fullPrice)
+        if(pokemonCollector.getPokemonCoin() >= fullPrice)
         {
             pokemonCollector.addCards(randomCards);
             pokemonCollector.subtractPokemonCoin(fullPrice);
@@ -45,7 +45,9 @@ public class ShopService
 
     public int countPriceOfCards(List<Card> randomCards)
     {
-        int fullPrice = randomCards.stream().mapToInt(card -> card.getPrice()).sum();
+        int fullPrice = randomCards.stream()
+                .mapToInt(card -> card.getPrice())
+                .sum();
 
         return fullPrice;
     }

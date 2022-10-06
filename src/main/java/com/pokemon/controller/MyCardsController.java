@@ -28,7 +28,9 @@ public class MyCardsController
         if(authorizationService.isUserLoggedIn())
         {
             List<Card> boughtCards =  authorizationService.getLoggedUserCollector().getCardList();
-            if(boughtCards != null)
+
+            //todo wywalic ten if i stescic
+            if(!boughtCards.isEmpty())
             {
                 model.addAttribute("boughtCards", boughtCards);
             }
