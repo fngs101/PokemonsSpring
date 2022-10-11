@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MyAccountController
+public class MyAccountController implements MainController
 {
     private AuthorizationService authorizationService;
 
@@ -17,7 +17,7 @@ public class MyAccountController
     @GetMapping("/my-account")
     public String getHomePage()
     {
-        if(authorizationService.isUserLoggedIn())
+        if(isUserLoggedIn())
         {
             return "my-account";
         }
@@ -27,5 +27,9 @@ public class MyAccountController
         }
     }
 
-
+    @Override
+    public boolean isUserLoggedIn()
+    {
+        return authorizationService.isUserLoggedIn();
+    }
 }

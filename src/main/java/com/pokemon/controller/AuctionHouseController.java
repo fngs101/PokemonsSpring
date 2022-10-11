@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class AuctionHouseController
+public class AuctionHouseController implements MainController
 {
     private AuthorizationService authorizationService;
     private AuctionHouseService auctionHouseService;
@@ -25,7 +25,7 @@ public class AuctionHouseController
     @GetMapping("/auction-house")
     public String getAuctionPage(Model model)
     {
-        if(authorizationService.isUserLoggedIn())
+        if(isUserLoggedIn())
         {
             List<Card> boughtCards =  authorizationService.getLoggedUserCollector().getCardList();
             model.addAttribute("boughtCards", boughtCards);
@@ -45,4 +45,9 @@ public class AuctionHouseController
         return "auction-house";
     }
 
+    @Override
+    public boolean isUserLoggedIn()
+    {
+        return authorizationService.isUserLoggedIn();
+    }
 }

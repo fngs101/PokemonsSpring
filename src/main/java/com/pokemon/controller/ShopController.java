@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class ShopController
+public class ShopController implements MainController
 {
     private ShopService shopService;
     private AuthorizationService authorizationService;
@@ -25,7 +25,7 @@ public class ShopController
     @GetMapping("/shop")
     public String getHomePage()
     {
-        if(authorizationService.isUserLoggedIn())
+        if(isUserLoggedIn())
         {
             return "shop";
         }
@@ -41,5 +41,11 @@ public class ShopController
         List<Card> pokemonCards = shopService.buy();
         model.addAttribute("pokemonCards", pokemonCards);
         return "shop";
+    }
+
+    @Override
+    public boolean isUserLoggedIn()
+    {
+        return authorizationService.isUserLoggedIn();
     }
 }

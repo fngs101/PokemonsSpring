@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class MyCardsController
+public class MyCardsController implements MainController
 {
+
     private AuthorizationService authorizationService;
     private PokemonCollectorRepository pokemonCollectorRepository;
 
@@ -25,7 +26,7 @@ public class MyCardsController
     @GetMapping("/my-cards")
     public String getHomePage(Model model)
     {
-        if(authorizationService.isUserLoggedIn())
+        if(isUserLoggedIn())
         {
             List<Card> boughtCards =  authorizationService.getLoggedUserCollector().getCardList();
 
@@ -40,6 +41,12 @@ public class MyCardsController
         {
             return "index";
         }
+    }
+
+    @Override
+    public boolean isUserLoggedIn()
+    {
+        return authorizationService.isUserLoggedIn();
     }
 
 //    @PostMapping("/my-cards")
