@@ -33,7 +33,7 @@ public class RegisterController
         {
             authorizationService.register(registerRequest);
             model.addAttribute("message", "Welcome to the Pokémon world, new user!");
-            return "my-account";
+            return "login";
         } catch (AuthorizationServiceException e)
         {
             model.addAttribute("errorMessage", e.getMessage());

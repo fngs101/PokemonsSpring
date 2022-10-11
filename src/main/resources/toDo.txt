@@ -1,7 +1,6 @@
 Todo:
 1. Dodac security
-2. Zrobic przekierowanie na logowanie po pomyslnej rejestracji
-3. zrobic interface controllerowy
-4. zrobic wyszarzony button na buy jak nie ma pieniedzy plus message ze go nie stac
-5. dodac licznik kart obecnie ile ma danej karty w przypadku duplikatow
+2. zrobic interface controllerowy
+3. zrobic wyszarzony button na buy jak nie ma pieniedzy plus message ze go nie stac
+4. dodac licznik kart obecnie ile ma danej karty w przypadku duplikatow
 
