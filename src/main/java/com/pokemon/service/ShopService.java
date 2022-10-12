@@ -30,17 +30,22 @@ public class ShopService
 
         Collections.shuffle(allCards);
         List<Card> randomCards = allCards.subList(0, 5);
-        int fullPrice = countPriceOfCards(randomCards);
 
+        int fullPrice = countPriceOfCards(randomCards);
         PokemonCollector pokemonCollector = authorizationService.getLoggedUserCollector();
-        if(pokemonCollector.getPokemonCoin() >= fullPrice)
+        if(canUserAffordBuy(fullPrice, pokemonCollector.getPokemonCoin()))
         {
             pokemonCollector.addCards(randomCards);
             pokemonCollector.subtractPokemonCoin(fullPrice);
             pokemonCollectorRepository.save(pokemonCollector);
         }
-
+        else
+        {
+            randomCards.clear();
+        }
         return randomCards;
+
+
     }
 
     public int countPriceOfCards(List<Card> randomCards)
@@ -50,5 +55,10 @@ public class ShopService
                 .sum();
 
         return fullPrice;
+    }
+
+    public boolean canUserAffordBuy(int fullPrice, int pokemonCoin)
+    {
+        return pokemonCoin >= fullPrice;
     }
 }

@@ -13,7 +13,8 @@
         </div>
     </div>
 <form action="/shop" method="post">
-<button type="submit">Buy cards</button>
+<button type="submit" th:disabled="${disabled}">Buy cards</button>
+    <div th:if="${message}" th:text="${message}" class="error"></div>
 </form>
 <div th:each="card:${pokemonCards}">
     <div th:text="${card.name}"></div>
