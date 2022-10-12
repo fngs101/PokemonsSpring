@@ -39,11 +39,14 @@ public class ShopController implements MainController
     public String buy(Model model)
     {
         List<Card> pokemonCards = shopService.buy();
-        model.addAttribute("pokemonCards", pokemonCards);
         if(pokemonCards.isEmpty())
         {
             model.addAttribute("disabled", true);
             model.addAttribute("message", "You cannot afford buying any cards");
+        }
+        else
+        {
+            model.addAttribute("pokemonCards", pokemonCards);
         }
         return "shop";
     }

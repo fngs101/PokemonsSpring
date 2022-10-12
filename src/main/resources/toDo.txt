@@ -1,5 +1,11 @@
 Todo:
 1. Dodac security
-2. zrobic wyszarzony button na buy jak nie ma pieniedzy plus message ze go nie stac
-3. dodac licznik kart obecnie ile ma danej karty w przypadku duplikatow
+2. zrobic wyszarzony button na buy jak nie ma pieniedzy plus message ze go nie stac -> done
+dodane w shopservice i potem w shop.html, czy nie powinien to byc po prostu blad exception zamiast pisac z reki?
+3. dodac licznik kart obecnie ile ma danej karty w przypadku duplikatow -> problem
+jest error
+"org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException:
+Unique index or primary key violation: "PUBLIC.UK_BVY11IUERQPFHFOOROGW5SBND_INDEX_1 ON
+PUBLIC.POKEMON_COLLECTOR_CARD_LIST(CARD_LIST_NAME NULLS FIRST) VALUES ( /* 31 */ 'Beedrill' )"; SQL statement:"
+pojawia sie kiedy user ma juz zakupiona dana karte a przy kolejnym buy ta karta tez jest wylosowana
 
