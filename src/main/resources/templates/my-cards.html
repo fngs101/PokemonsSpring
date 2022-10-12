@@ -13,10 +13,11 @@
         <p>This is My cards</p>
     </div>
 </div>
-
+<div class="cards">
 <div th:each="card:${boughtCards}">
     <div th:text="${card.name}"></div>
     <img th:src="${card.url}">
+</div>
 </div>
 </body>
 </html>

@@ -16,9 +16,11 @@
 <button type="submit" th:disabled="${disabled}">Buy cards</button>
     <div th:if="${message}" th:text="${message}" class="error"></div>
 </form>
+<div class="cards">
 <div th:each="card:${pokemonCards}">
     <div th:text="${card.name}"></div>
     <img th:src="${card.url}">
+</div>
 </div>
 </body>
 </html>

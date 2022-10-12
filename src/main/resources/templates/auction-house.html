@@ -13,6 +13,7 @@
         <p>This is Auction House</p>
     </div>
 </div>
+<div class="cards">
 <div th:each="card:${boughtCards}">
     <div th:text="${card.name}"></div>
     <img th:src="${card.url}">
@@ -23,6 +24,7 @@
         <input type="number" name="price">
         <input type="submit" value="Create auction" >
     </form>
+</div>
 </div>
 </body>
 </html>
