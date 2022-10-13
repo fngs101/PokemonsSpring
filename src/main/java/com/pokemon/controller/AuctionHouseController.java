@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class AuctionHouseController implements MainController
+public class AuctionHouseController extends MainController
 {
-    private AuthorizationService authorizationService;
     private AuctionHouseService auctionHouseService;
 
     public AuctionHouseController(AuthorizationService authorizationService, AuctionHouseService auctionHouseService)
     {
-        this.authorizationService = authorizationService;
+        super(authorizationService);
         this.auctionHouseService = auctionHouseService;
     }
 
@@ -45,9 +44,4 @@ public class AuctionHouseController implements MainController
         return "auction-house";
     }
 
-    @Override
-    public boolean isUserLoggedIn()
-    {
-        return authorizationService.isUserLoggedIn();
-    }
 }

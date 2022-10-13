@@ -11,15 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class MyCardsController implements MainController
+public class MyCardsController  extends MainController
 {
 
-    private AuthorizationService authorizationService;
     private PokemonCollectorRepository pokemonCollectorRepository;
 
     public MyCardsController(AuthorizationService authorizationService, PokemonCollectorRepository pokemonCollectorRepository)
     {
-        this.authorizationService = authorizationService;
+        super(authorizationService);
         this.pokemonCollectorRepository = pokemonCollectorRepository;
     }
 
@@ -43,11 +42,6 @@ public class MyCardsController implements MainController
         }
     }
 
-    @Override
-    public boolean isUserLoggedIn()
-    {
-        return authorizationService.isUserLoggedIn();
-    }
 
 //    @PostMapping("/my-cards")
 //    public String showBoughtCards(Model model)

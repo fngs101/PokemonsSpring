@@ -5,13 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MyAccountController implements MainController
+public class MyAccountController extends MainController
 {
-    private AuthorizationService authorizationService;
 
     public MyAccountController(AuthorizationService authorizationService)
     {
-        this.authorizationService = authorizationService;
+        super(authorizationService);
     }
 
     @GetMapping("/my-account")
@@ -27,9 +26,4 @@ public class MyAccountController implements MainController
         }
     }
 
-    @Override
-    public boolean isUserLoggedIn()
-    {
-        return authorizationService.isUserLoggedIn();
-    }
 }

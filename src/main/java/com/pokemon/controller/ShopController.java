@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class ShopController implements MainController
+public class ShopController extends MainController
 {
     private ShopService shopService;
     private AuthorizationService authorizationService;
 
     public ShopController(ShopService shopService, AuthorizationService authorizationService)
     {
+        super(authorizationService);
         this.shopService = shopService;
-        this.authorizationService = authorizationService;
     }
 
     @GetMapping("/shop")
@@ -51,9 +51,4 @@ public class ShopController implements MainController
         return "shop";
     }
 
-    @Override
-    public boolean isUserLoggedIn()
-    {
-        return authorizationService.isUserLoggedIn();
-    }
 }
