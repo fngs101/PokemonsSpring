@@ -11,5 +11,5 @@ pojawia sie kiedy user ma juz zakupiona dana karte a przy kolejnym buy ta karta 
 roziwazanie na error to jest inne entit yw bazie
 
 
-jak załąnczyć filtr ?
+jak załączyć filtr ?
 jak sprawdzić na jaką stronę akurat robi zapytanie?

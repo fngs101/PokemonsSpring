@@ -13,7 +13,6 @@ public class PokemonCollector
     private String userName;
     @OneToMany(fetch=FetchType.EAGER)
     private List<Card> cardList = new ArrayList<>();
-//    private List<OwnedCard> cardsList = new ArrayList<>();
     private int pokemonCoin = 100;
 
 

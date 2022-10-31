@@ -2,6 +2,7 @@ package com.pokemon.service;
 
 import com.pokemon.domain.Card;
 import com.pokemon.domain.PokemonCollector;
+import com.pokemon.exception.ShopServiceException;
 import com.pokemon.repository.CardRepository;
 import com.pokemon.repository.PokemonCollectorRepository;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class ShopService
         this.authorizationService = authorizationService;
     }
 
-    public List<Card> buy()
+    public List<Card> buy() throws ShopServiceException
     {
         List<Card> allCards = cardRepository.findAll();
 
@@ -41,7 +42,8 @@ public class ShopService
         }
         else
         {
-            randomCards.clear();
+//            randomCards.clear();
+            throw new ShopServiceException("No money to buy cards");
         }
         return randomCards;
 
