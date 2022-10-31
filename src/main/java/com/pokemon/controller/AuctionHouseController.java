@@ -1,6 +1,5 @@
 package com.pokemon.controller;
-
-import com.pokemon.domain.Card;
+import com.pokemon.domain.OwnedCard;
 import com.pokemon.service.AuctionHouseService;
 import com.pokemon.service.AuthorizationService;
 import org.springframework.stereotype.Controller;
@@ -26,7 +25,7 @@ public class AuctionHouseController extends MainController
     {
         if(isUserLoggedIn())
         {
-            List<Card> boughtCards =  authorizationService.getLoggedUserCollector().getCardList();
+            List<OwnedCard> boughtCards =  authorizationService.getLoggedUserCollector().getOwnedCardList();
             model.addAttribute("boughtCards", boughtCards);
             return "auction-house";
         }

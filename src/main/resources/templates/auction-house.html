@@ -14,9 +14,9 @@
     </div>
 </div>
 <div class="cards">
-<div th:each="card:${boughtCards}">
-    <div th:text="${card.name}"></div>
-    <img th:src="${card.url}">
+<div th:each="ownedcard:${boughtCards}">
+    <div th:text="${ownedcard.card.name}"></div>
+    <img th:src="${ownedcard.card.url}">
     <form action="/create-auction" method="post">
         <label>Amount to sell</label>
         <input type="number" name="amountToSell">
