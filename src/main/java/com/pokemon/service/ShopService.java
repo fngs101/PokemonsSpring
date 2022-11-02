@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ShopService
@@ -40,23 +39,33 @@ public class ShopService
         PokemonCollector pokemonCollector = authorizationService.getLoggedUserCollector();
         List<OwnedCard> ownedCards = pokemonCollector.getOwnedCardList();
 
-        checkForDuplicates(randomCards, ownedCards);
         if(canUserAffordBuy(fullPrice, pokemonCollector.getPokemonCoin()))
         {
-
             List<OwnedCard> boughtCards = new ArrayList<>();
             for(Card card : randomCards)
             {
-                OwnedCard ownedCard = new OwnedCard();
-                ownedCard.setCard(card);
-                ownedCard.setAmount(1);
-                boughtCards.add(ownedCard);
+                OwnedCard duplicateCard = findDuplicate(card.getName(), ownedCards);
+                if(duplicateCard == null)
+                {
+                    OwnedCard ownedCard = new OwnedCard();
+                    ownedCard.setCard(card);
+                    ownedCard.setAmount(1);
+                    ownedCard.setPokemonCollector(pokemonCollector);
+                    boughtCards.add(ownedCard);
+                }
+                else
+                {
+                    duplicateCard.setAmount(duplicateCard.getAmount() + 1);
+                    ownedCardRepository.save(duplicateCard);
+                }
 
             }
             pokemonCollector.addCards2(boughtCards);
             ownedCardRepository.saveAll(boughtCards);
+
             pokemonCollector.subtractPokemonCoin(fullPrice);
-            pokemonCollectorRepository.save(pokemonCollector);
+
+//            pokemonCollectorRepository.save(pokemonCollector); -> to powoduje error, chce zapisac w to POKEMON_COLLECTOR_OWNED_CARD_LIST i jest blad ze to ID juz istnieje
         }
         else
         {
@@ -85,11 +94,16 @@ public class ShopService
         return fullPrice;
     }
 
-    private void checkForDuplicates(List<Card> randomCards, List<OwnedCard> ownedCards)
+    private OwnedCard findDuplicate(String cardName, List<OwnedCard> ownedCards)
     {
-        boolean ee = randomCards.stream().anyMatch(card -> ownedCards.contains(card));
-
-        System.out.println(ee);
+        for(OwnedCard ownedCard : ownedCards)
+        {
+            if(ownedCard.getCard().getName().equals(cardName))
+            {
+                return ownedCard;
+            }
+        }
+        return null;
     }
 
     private boolean canUserAffordBuy(int fullPrice, int pokemonCoin)

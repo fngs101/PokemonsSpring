@@ -13,7 +13,7 @@ public class PokemonCollector
     private String userName;
     @OneToMany(fetch=FetchType.EAGER)
     private List<OwnedCard> ownedCardList = new ArrayList<>();
-    private int pokemonCoin = 100;
+    private int pokemonCoin = 10000;
 
 
     public PokemonCollector()
@@ -48,5 +48,35 @@ public class PokemonCollector
     public void subtractPokemonCoin(int coinsToSubtract)
     {
         pokemonCoin -= coinsToSubtract;
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getUserName()
+    {
+        return userName;
+    }
+
+    public void setUserName(String userName)
+    {
+        this.userName = userName;
+    }
+
+    public void setOwnedCardList(List<OwnedCard> ownedCardList)
+    {
+        this.ownedCardList = ownedCardList;
+    }
+
+    public void setPokemonCoin(int pokemonCoin)
+    {
+        this.pokemonCoin = pokemonCoin;
     }
 }
