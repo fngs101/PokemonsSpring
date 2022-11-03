@@ -2,6 +2,8 @@ Todo:
 1. Dodac security
 2. zrobic wyszarzony button na buy jak nie ma pieniedzy plus message ze go nie stac -> to correct
 dodane w shopservice i potem w shop.html, czy nie powinien to byc po prostu blad exception zamiast pisac z reki? tak
+JEST JUZ POPRAWIONE - DO SPRAWDZENIA
+
 3. dodac licznik kart obecnie ile ma danej karty w przypadku duplikatow -> problem
 jest error
 "org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException:
@@ -9,6 +11,9 @@ Unique index or primary key violation: "PUBLIC.UK_BVY11IUERQPFHFOOROGW5SBND_INDE
 PUBLIC.POKEMON_COLLECTOR_CARD_LIST(CARD_LIST_NAME NULLS FIRST) VALUES ( /* 31 */ 'Beedrill' )"; SQL statement:"
 pojawia sie kiedy user ma juz zakupiona dana karte a przy kolejnym buy ta karta tez jest wylosowana
 roziwazanie na error to jest inne entit yw bazie
+
+TEORETYCZNIE ROZWIAZANE ALE JEST NOWY BUG - cos chyba z relacjami
+PYTANIE - CZEMU W BAZIE NADAL ISTNIEJE COS STAREGO
 
 
 jak załączyć filtr ?

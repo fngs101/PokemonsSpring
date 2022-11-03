@@ -20,10 +20,6 @@ public class PokemonCollector
     {
 
     }
-    public void addCards2(List<OwnedCard> boughtCards)
-    {
-        ownedCardList.addAll(boughtCards);
-    }
 
 //    public void addCards(List<Card> boughtCards)
 //    {
@@ -78,5 +74,35 @@ public class PokemonCollector
     public void setPokemonCoin(int pokemonCoin)
     {
         this.pokemonCoin = pokemonCoin;
+    }
+
+    public void addCards(List<Card> randomCards)
+    {
+        for(Card card : randomCards)
+        {
+            OwnedCard duplicateCard = findDuplicate(card.getName());
+            if(duplicateCard == null)
+            {
+                OwnedCard ownedCard = new OwnedCard( card, 1);
+                ownedCardList.add(ownedCard);
+            }
+            else
+            {
+                duplicateCard.setAmount(duplicateCard.getAmount() + 1);
+            }
+
+        }
+    }
+
+    private OwnedCard findDuplicate(String cardName)
+    {
+        for(OwnedCard ownedCard : ownedCardList)
+        {
+            if(ownedCard.getCard().getName().equals(cardName))
+            {
+                return ownedCard;
+            }
+        }
+        return null;
     }
 }

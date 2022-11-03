@@ -37,35 +37,16 @@ public class ShopService
         int fullPrice = countPriceOfCards(randomCards);
 
         PokemonCollector pokemonCollector = authorizationService.getLoggedUserCollector();
-        List<OwnedCard> ownedCards = pokemonCollector.getOwnedCardList();
 
         if(canUserAffordBuy(fullPrice, pokemonCollector.getPokemonCoin()))
         {
-            List<OwnedCard> boughtCards = new ArrayList<>();
-            for(Card card : randomCards)
-            {
-                OwnedCard duplicateCard = findDuplicate(card.getName(), ownedCards);
-                if(duplicateCard == null)
-                {
-                    OwnedCard ownedCard = new OwnedCard();
-                    ownedCard.setCard(card);
-                    ownedCard.setAmount(1);
-                    ownedCard.setPokemonCollector(pokemonCollector);
-                    boughtCards.add(ownedCard);
-                }
-                else
-                {
-                    duplicateCard.setAmount(duplicateCard.getAmount() + 1);
-                    ownedCardRepository.save(duplicateCard);
-                }
-
-            }
-            pokemonCollector.addCards2(boughtCards);
-            ownedCardRepository.saveAll(boughtCards);
+            pokemonCollector.addCards(randomCards);
+            ownedCardRepository.saveAll(pokemonCollector.getOwnedCardList());
 
             pokemonCollector.subtractPokemonCoin(fullPrice);
 
-//            pokemonCollectorRepository.save(pokemonCollector); -> to powoduje error, chce zapisac w to POKEMON_COLLECTOR_OWNED_CARD_LIST i jest blad ze to ID juz istnieje
+            pokemonCollectorRepository.save(pokemonCollector);
+//            -> to powoduje error, chce zapisac w to POKEMON_COLLECTOR_OWNED_CARD_LIST i jest blad ze to ID juz istnieje
         }
         else
         {

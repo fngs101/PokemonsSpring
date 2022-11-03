@@ -17,18 +17,25 @@ public class OwnedCard
     private int id;
     //nie podoba mi sie ze istnieje tabela ownedcard taka w powietrzu, powinna byc powiazana z pokemoncollectorem wiec zrobilam ponizsze
     //ale skad sie bierze tabela POKEMON_COLLECTOR_OWNED_CARD_LIST
-    @ManyToOne
-    @JoinColumns({
+   // @ManyToOne
+    /*@JoinColumns({
             @JoinColumn(name="POKEMONCOLLECTOR_ID", referencedColumnName="id")
-    })
-    private PokemonCollector pokemonCollector;
-    @OneToOne()
-    @JoinColumn(name = "card_Name", referencedColumnName = "name")
+    })*/
+    //private PokemonCollector pokemonCollector;
+    @ManyToOne
+  //  @JoinColumn(name = "card_Name", referencedColumnName = "name")
     private Card card;
     private int amount;
 
     public OwnedCard()
     {
+    }
+
+    public OwnedCard( Card card, int amount)
+    {
+       // this.pokemonCollector = pokemonCollector;
+        this.card = card;
+        this.amount = amount;
     }
 
     public int getId()
@@ -61,7 +68,7 @@ public class OwnedCard
         this.amount = amount;
     }
 
-    public PokemonCollector getPokemonCollector()
+   /* public PokemonCollector getPokemonCollector()
     {
         return pokemonCollector;
     }
@@ -69,5 +76,5 @@ public class OwnedCard
     public void setPokemonCollector(PokemonCollector pokemonCollector)
     {
         this.pokemonCollector = pokemonCollector;
-    }
+    }*/
 }

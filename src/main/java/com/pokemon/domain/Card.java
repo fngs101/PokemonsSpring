@@ -11,6 +11,7 @@ public class Card
 {
     @Id
     private String name;
+//TODO BRAĆ Z JSON ZARÓWNO NAME I ID
 
     private String url;
     private int price = 10;
