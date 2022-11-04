@@ -1,5 +1,7 @@
 package com.pokemon.domain;
 
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,11 +19,11 @@ public class OwnedCard
     private int id;
     //nie podoba mi sie ze istnieje tabela ownedcard taka w powietrzu, powinna byc powiazana z pokemoncollectorem wiec zrobilam ponizsze
     //ale skad sie bierze tabela POKEMON_COLLECTOR_OWNED_CARD_LIST
-   // @ManyToOne
-    /*@JoinColumns({
-            @JoinColumn(name="POKEMONCOLLECTOR_ID", referencedColumnName="id")
-    })*/
-    //private PokemonCollector pokemonCollector;
+//    @ManyToOne
+//    @JoinColumns({
+//            @JoinColumn(name="POKEMONCOLLECTOR_ID", referencedColumnName="id")
+//    })
+//    private PokemonCollector pokemonCollector;
     @ManyToOne
   //  @JoinColumn(name = "card_Name", referencedColumnName = "name")
     private Card card;

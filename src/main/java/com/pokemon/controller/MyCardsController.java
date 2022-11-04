@@ -2,6 +2,7 @@ package com.pokemon.controller;
 
 import com.pokemon.domain.Card;
 import com.pokemon.domain.OwnedCard;
+import com.pokemon.domain.PokemonCollector;
 import com.pokemon.repository.PokemonCollectorRepository;
 import com.pokemon.service.AuthorizationService;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,8 @@ public class MyCardsController  extends MainController
     {
         if(isUserLoggedIn())
         {
-            List<OwnedCard> boughtCards =  authorizationService.getLoggedUserCollector().getOwnedCardList();
+            PokemonCollector pokemonCollector =  pokemonCollectorRepository.findById(authorizationService.getLoggedUserCollector().getId()).get();
+            List<OwnedCard> boughtCards = pokemonCollector.getOwnedCardList();
 
             //todo wywalic ten if i stescic
             if(!boughtCards.isEmpty())

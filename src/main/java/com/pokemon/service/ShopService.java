@@ -36,17 +36,23 @@ public class ShopService
         List<Card> randomCards = drawCards();
         int fullPrice = countPriceOfCards(randomCards);
 
-        PokemonCollector pokemonCollector = authorizationService.getLoggedUserCollector();
+        //stara wersja wyciagania obecnego collectora
+        PokemonCollector pokemonCollector1 = authorizationService.getLoggedUserCollector();
+        //nowa wersja, teraz jakby wiedzial gdzie chce robic update
+        PokemonCollector pokemonCollector= pokemonCollectorRepository.findById(pokemonCollector1.getId()).get();
 
         if(canUserAffordBuy(fullPrice, pokemonCollector.getPokemonCoin()))
         {
+
             pokemonCollector.addCards(randomCards);
             ownedCardRepository.saveAll(pokemonCollector.getOwnedCardList());
 
             pokemonCollector.subtractPokemonCoin(fullPrice);
 
             pokemonCollectorRepository.save(pokemonCollector);
-//            -> to powoduje error, chce zapisac w to POKEMON_COLLECTOR_OWNED_CARD_LIST i jest blad ze to ID juz istnieje
+
+//           wczesniej tu byl blad ze taki pokemoncollector juz istnieje, robil insert z ID 1, przy
+//           nastepnym buy robil insert z ID 2
         }
         else
         {

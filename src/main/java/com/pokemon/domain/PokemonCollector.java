@@ -1,5 +1,7 @@
 package com.pokemon.domain;
 
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
