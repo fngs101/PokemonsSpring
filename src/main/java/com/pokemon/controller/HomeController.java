@@ -20,10 +20,10 @@ public class HomeController
         return "index";
     }
 
-    @GetMapping("/hello")
+    @GetMapping("/test/1")
     public String getHello()
     {
-        return "hello";
+        return "/users/test";
     }
 
 }
