@@ -28,6 +28,7 @@ public class AuthorizationService
         this.pokemonCollectorRepository = pokemonCollectorRepository;
     }
 
+
     public void register(RegisterRequest registerRequest) throws AuthorizationServiceException
     {
         validatePassword(registerRequest);

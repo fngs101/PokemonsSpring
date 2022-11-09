@@ -7,13 +7,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class LoginFilterConfig
 {
+
     @Bean
-    public FilterRegistrationBean<LoginFilter> loggingFilter()
+    public FilterRegistrationBean<LoginFilter> loggingFilter(final LoginFilter loginFilter)
     {
         FilterRegistrationBean<LoginFilter> registrationBean = new FilterRegistrationBean<>();
 
-        registrationBean.setFilter(new LoginFilter());
-        registrationBean.addUrlPatterns("/test/*");
+        registrationBean.setFilter(loginFilter);
+        registrationBean.addUrlPatterns("/app/*");
 
         return registrationBean;
     }

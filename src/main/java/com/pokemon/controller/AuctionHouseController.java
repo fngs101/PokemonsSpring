@@ -20,19 +20,22 @@ public class AuctionHouseController extends MainController
         this.auctionHouseService = auctionHouseService;
     }
 
-    @GetMapping("/auction-house")
+    @GetMapping("/app/auction-house")
     public String getAuctionPage(Model model)
     {
-        if(isUserLoggedIn())
-        {
-            List<OwnedCard> boughtCards =  authorizationService.getLoggedUserCollector().getOwnedCardList();
-            model.addAttribute("boughtCards", boughtCards);
-            return "auction-house";
-        }
-        else
-        {
-            return "index";
-        }
+//        if(isUserLoggedIn())
+//        {
+//            List<OwnedCard> boughtCards =  authorizationService.getLoggedUserCollector().getOwnedCardList();
+//            model.addAttribute("boughtCards", boughtCards);
+//            return "auction-house";
+//        }
+//        else
+//        {
+//            return "index";
+//        }
+//        List<OwnedCard> boughtCards =  authorizationService.getLoggedUserCollector().getOwnedCardList();
+//        model.addAttribute("boughtCards", boughtCards);
+        return "app/auction-house";
     }
 
     @PostMapping("/create-auction")
