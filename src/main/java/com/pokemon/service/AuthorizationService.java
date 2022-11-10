@@ -84,9 +84,9 @@ public class AuthorizationService
         return accountRepository.findById(id).orElseThrow(()-> new AuthorizationServiceException("Wrong email or password"));
     }
 
-    public PokemonCollector getLoggedUserCollector()
+    public int getPokemonCollectorId()
     {
-        return sessionState.getAccount().getPokemonCollector();
+        return sessionState.getAccount().getPokemonCollector().getId();
     }
 
     public boolean isUserLoggedIn()

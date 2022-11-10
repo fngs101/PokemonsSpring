@@ -39,6 +39,10 @@ public class LoginFilter implements Filter
             System.out.println(redirectedRequest.getRequestURI());
             filterChain.doFilter(redirectedRequest, servletResponse);
         }
+        else
+        {
+            filterChain.doFilter(request, servletResponse);
+        }
     }
 
 }

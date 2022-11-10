@@ -3,6 +3,7 @@ package com.pokemon.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import java.util.Objects;
 
 @Entity
 public class Account
@@ -38,5 +39,20 @@ public class Account
     public PokemonCollector getPokemonCollector()
     {
         return pokemonCollector;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return email.equals(account.email);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(email);
     }
 }

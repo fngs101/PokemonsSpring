@@ -9,7 +9,6 @@ import com.pokemon.repository.OwnedCardRepository;
 import com.pokemon.repository.PokemonCollectorRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -36,10 +35,9 @@ public class ShopService
         List<Card> randomCards = drawCards();
         int fullPrice = countPriceOfCards(randomCards);
 
-        //stara wersja wyciagania obecnego collectora
-        PokemonCollector pokemonCollector1 = authorizationService.getLoggedUserCollector();
-        //nowa wersja, teraz jakby wiedzial gdzie chce robic update
-        PokemonCollector pokemonCollector= pokemonCollectorRepository.findById(pokemonCollector1.getId()).get();
+        int id = authorizationService.getPokemonCollectorId();
+        PokemonCollector pokemonCollector = pokemonCollectorRepository.findById(id).get();
+
 
         if(canUserAffordBuy(fullPrice, pokemonCollector.getPokemonCoin()))
         {
@@ -51,8 +49,6 @@ public class ShopService
 
             pokemonCollectorRepository.save(pokemonCollector);
 
-//           wczesniej tu byl blad ze taki pokemoncollector juz istnieje, robil insert z ID 1, przy
-//           nastepnym buy robil insert z ID 2
         }
         else
         {
