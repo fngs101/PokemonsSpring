@@ -25,7 +25,6 @@ public class LoginFilter implements Filter
     {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
 
-        System.out.println("FILTER DLA:     " + request.getRequestURI() + " " + request.getMethod());
         if(!authorizationService.isUserLoggedIn())
         {
             HttpServletRequestWrapper redirectedRequest = new HttpServletRequestWrapper(request)

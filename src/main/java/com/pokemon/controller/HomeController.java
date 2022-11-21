@@ -7,23 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController
 {
-//    @RequestMapping(path="/home", method = RequestMethod.GET)
-//    public ModelAndView getHomePage()
-//    {
-//        ModelAndView modelAndView = new ModelAndView("index.html");
-//        return modelAndView;
-//    }
-
     @GetMapping("/")
     public String getHomePage()
     {
         return "index";
-    }
-
-    @GetMapping("/test/1")
-    public String getHello()
-    {
-        return "/users/test";
     }
 
 }

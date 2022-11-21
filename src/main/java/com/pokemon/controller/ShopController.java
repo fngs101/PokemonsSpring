@@ -23,7 +23,7 @@ public class ShopController extends MainController
         this.shopService = shopService;
     }
 
-    @GetMapping("/shop")
+    @GetMapping("/app/shop")
     public String getHomePage()
     {
         if(isUserLoggedIn())
@@ -36,7 +36,7 @@ public class ShopController extends MainController
         }
     }
 
-    @PostMapping("/shop")
+    @PostMapping("/app/shop")
     public String buy(Model model)
     {
         List<Card> pokemonCards;

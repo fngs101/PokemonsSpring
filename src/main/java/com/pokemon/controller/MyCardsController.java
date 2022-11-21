@@ -22,7 +22,7 @@ public class MyCardsController  extends MainController
         this.pokemonCollectorRepository = pokemonCollectorRepository;
     }
 
-    @GetMapping("/my-cards")
+    @GetMapping("/app/my-cards")
     public String getHomePage(Model model)
     {
         if(isUserLoggedIn())
@@ -42,15 +42,4 @@ public class MyCardsController  extends MainController
             return "index";
         }
     }
-
-
-//    @PostMapping("/my-cards")
-//    public String showBoughtCards(Model model)
-//    {
-//       List<Card> boughtCards =  pokemonCollector.getCardList();
-//        model.addAttribute("boughtCards", boughtCards);
-//        System.out.println(boughtCards.get(0).getUrl());
-//        return "my-cards";
-//    }
-
 }

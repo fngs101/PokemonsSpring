@@ -13,7 +13,7 @@ public class MyAccountController extends MainController
         super(authorizationService);
     }
 
-    @GetMapping("/my-account")
+    @GetMapping("/app/my-account")
     public String getHomePage()
     {
         if(isUserLoggedIn())
