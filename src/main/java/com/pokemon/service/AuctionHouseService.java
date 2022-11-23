@@ -28,8 +28,17 @@ public class AuctionHouseService
     {
         int id = authorizationService.getPokemonCollectorId();
         PokemonCollector pokemonCollector = pokemonCollectorRepository.findById(id).get();
-        Auction auction = new Auction(amountToSell, price, ownedCard, pokemonCollector);
-//        auction.ge
+        int amountOfCard = pokemonCollector.getOwnedCardList().get(ownedCard.getId()).getAmount();
+        Auction auction;
+        if(amountOfCard < amountToSell)
+        {
+            throw new AuctionException("You do not have that amount of this card");
+        }
+        else
+        {
+             auction = new Auction(amountToSell, price, ownedCard, pokemonCollector);
+        }
+
         auctionHouseRepository.save(auction);
     }
 

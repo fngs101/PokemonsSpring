@@ -43,7 +43,7 @@ public class AuctionHouseController extends MainController
         }
         catch (AuctionException e)
         {
-            throw new RuntimeException(e);
+            //message
         }
 
         return "auction-house";
