@@ -17,15 +17,7 @@ public class OwnedCard
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-    //nie podoba mi sie ze istnieje tabela ownedcard taka w powietrzu, powinna byc powiazana z pokemoncollectorem wiec zrobilam ponizsze
-    //ale skad sie bierze tabela POKEMON_COLLECTOR_OWNED_CARD_LIST
-//    @ManyToOne
-//    @JoinColumns({
-//            @JoinColumn(name="POKEMONCOLLECTOR_ID", referencedColumnName="id")
-//    })
-//    private PokemonCollector pokemonCollector;
     @ManyToOne
-  //  @JoinColumn(name = "card_Name", referencedColumnName = "name")
     private Card card;
     private int amount;
 

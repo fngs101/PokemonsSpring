@@ -1,6 +1,7 @@
 package com.pokemon.controller;
 
 import com.pokemon.domain.OwnedCard;
+import com.pokemon.exception.AuctionException;
 import com.pokemon.repository.PokemonCollectorRepository;
 import com.pokemon.service.AuctionHouseService;
 import com.pokemon.service.AuthorizationService;
@@ -34,9 +35,16 @@ public class AuctionHouseController extends MainController
     }
 
     @PostMapping("/create-auction")
-    public String createAuction(int amountToSell, double price, Model model)
+    public String createAuction(int amountToSell, double price, OwnedCard ownedcard)
     {
-        auctionHouseService.createAuction(amountToSell, price);
+        try
+        {
+            auctionHouseService.createAuction(amountToSell, price, ownedcard);
+        }
+        catch (AuctionException e)
+        {
+            throw new RuntimeException(e);
+        }
 
         return "auction-house";
     }
