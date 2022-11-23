@@ -43,7 +43,7 @@ public class AuctionHouseController extends MainController
         }
         catch (AuctionException e)
         {
-            //message
+            //dodac message do auction-house view
         }
 
         return "auction-house";

@@ -1,6 +1,7 @@
 package com.pokemon.service;
 
 import com.pokemon.domain.Auction;
+import com.pokemon.domain.Card;
 import com.pokemon.domain.OwnedCard;
 import com.pokemon.domain.PokemonCollector;
 import com.pokemon.exception.AuctionException;
@@ -36,7 +37,7 @@ public class AuctionHouseService
         }
         else
         {
-             auction = new Auction(amountToSell, price, ownedCard, pokemonCollector);
+             auction = new Auction(amountToSell, price, ownedCard.getCard(), pokemonCollector);
         }
 
         auctionHouseRepository.save(auction);

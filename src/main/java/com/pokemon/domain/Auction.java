@@ -9,7 +9,7 @@ public class Auction
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     @ManyToOne
-    private OwnedCard card;
+    private Card card;
     @ManyToOne
     private PokemonCollector pokemonCollector;
     private double price;
@@ -19,7 +19,7 @@ public class Auction
     {
     }
 
-    public Auction(int cardAmount, double price, OwnedCard card, PokemonCollector pokemonCollector)
+    public Auction(int cardAmount, double price, Card card, PokemonCollector pokemonCollector)
     {
         this.cardAmount = cardAmount;
         this.price = price;
@@ -32,7 +32,7 @@ public class Auction
         return id;
     }
 
-    public OwnedCard getCard()
+    public Card getCard()
     {
         return card;
     }

@@ -6,12 +6,10 @@ JEST JUZ POPRAWIONE - DO SPRAWDZENIA
 thymeleaf disabled
 3. zaciaganie wszystkich kart a nie tylko okreslona ilosc
 4. auction house akcje wystawienia do aukcji i zapisac w bazie danych, user nie ma karty, oddal na karty
-w modelu auction zmienilam Card na OwnedCard
-zmienilam konstruktor
+w modelu auction zmienilam konstruktor
 stworzylam auctionhouseException - rzucanie jesli user nie ma tyle kart
 w controllerze createauction zmodyfikowane
+w bazie sie ladnie zapisuje ale card_name jest null
 
-wywala error - porada z internetu zeby dodac cascade type all do owned card w auction house,
-wtedy dziala ale w bazie nie wyglada ok
 5. kupowanie z innych aukcji
 
