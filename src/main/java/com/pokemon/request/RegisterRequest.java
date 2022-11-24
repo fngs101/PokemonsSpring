@@ -13,6 +13,10 @@ public class RegisterRequest
         this.passwordRepeat = passwordRepeat;
     }
 
+    public RegisterRequest()
+    {
+    }
+
     public String getEmail()
     {
         return email;
@@ -26,5 +30,20 @@ public class RegisterRequest
     public String getPasswordRepeat()
     {
         return passwordRepeat;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
+    public void setPasswordRepeat(String passwordRepeat)
+    {
+        this.passwordRepeat = passwordRepeat;
     }
 }
