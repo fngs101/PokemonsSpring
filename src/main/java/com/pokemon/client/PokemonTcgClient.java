@@ -22,6 +22,7 @@ public class PokemonTcgClient
 {
     private CardRepository repository;
     private static final String URL = "https://api.pokemontcg.io/v2/cards/";
+    private static final int totalCount = 15615;
 
     public PokemonTcgClient(CardRepository repository)
     {
@@ -37,21 +38,25 @@ public class PokemonTcgClient
         }
         RestTemplate restTemplate = new RestTemplate();
 
-        //todo jak znalezc info ile w ogole jest obiektow, stron poprzez resttemplate. Nizej proba wyciagniecia z jsona? nie wiem
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//        HttpEntity<String> entity = new HttpEntity<>(headers);
-//
-//        ResponseEntity<String> result = restTemplate.exchange(URL, HttpMethod.GET, entity, String.class);
-//        result.getBody().
+        for(int i = 0; i < 50; i++)
+        {
+            int iCopy = i;
+            Runnable runnable = () ->
+            {
+                List<Card> cardsList = restTemplate.getForObject(URL + "?page=" + iCopy, PokemonRequest.class).getData()
+                        .stream()
+                        .map(cardRequest -> new Card(cardRequest.getName(), cardRequest.getImages().getSmall()))
+                        .collect(Collectors.toList());
+                System.out.println("finished download " + iCopy + " " + cardsList);
 
-        List<Card> cardsList = restTemplate.getForObject(URL, PokemonRequest.class).getData()
-                .stream()
-                .map(cardRequest -> new Card(cardRequest.getName(), cardRequest.getImages().getSmall()))
-                .collect(Collectors.toList());
-        System.out.println(cardsList);
 
-        repository.saveAll(cardsList);
+                repository.saveAll(cardsList);
+            };
+            Thread thread = new Thread(runnable);
+            thread.start();
+        }
+
+
 
     }
 }
