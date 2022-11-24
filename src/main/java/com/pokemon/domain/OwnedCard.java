@@ -71,4 +71,14 @@ public class OwnedCard
     {
         this.pokemonCollector = pokemonCollector;
     }*/
+
+    @Override
+    public String toString()
+    {
+        return "OwnedCard{" +
+                "id=" + id +
+                ", card=" + card.getName() +
+                ", amount=" + amount +
+                '}';
+    }
 }

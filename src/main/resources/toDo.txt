@@ -13,3 +13,6 @@ w bazie sie ladnie zapisuje ale card_name jest null
 
 5. kupowanie z innych aukcji
 
+
+adnotacja schedule springowa tutorial
+
