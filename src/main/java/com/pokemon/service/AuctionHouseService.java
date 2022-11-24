@@ -25,20 +25,20 @@ public class AuctionHouseService
         this.auctionHouseRepository = auctionHouseRepository;
     }
 
-    public void createAuction(int amountToSell, double price, OwnedCard ownedCard) throws AuctionException
+    public void createAuction(int amountToSell, double price, int ownedCardId) throws AuctionException
     {
         int id = authorizationService.getPokemonCollectorId();
         PokemonCollector pokemonCollector = pokemonCollectorRepository.findById(id).get();
-        int amountOfCard = pokemonCollector.getOwnedCardList().get(ownedCard.getId()).getAmount();
-        Auction auction;
+        OwnedCard ownedCard = pokemonCollector.getOwnedCardList().get(ownedCardId);
+        int amountOfCard = ownedCard.getAmount();
+
         if(amountOfCard < amountToSell)
         {
             throw new AuctionException("You do not have that amount of this card");
         }
-        else
-        {
-             auction = new Auction(amountToSell, price, ownedCard.getCard(), pokemonCollector);
-        }
+
+        Auction auction = new Auction(amountToSell, price, ownedCard.getCard(), pokemonCollector);
+
 
         auctionHouseRepository.save(auction);
     }

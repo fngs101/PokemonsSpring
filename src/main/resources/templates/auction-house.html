@@ -17,7 +17,7 @@
 <div th:each="ownedcard:${boughtCards}">
     <div th:text="${ownedcard.card.name}"></div>
     <img th:src="${ownedcard.card.url}">
-    <form action="/create-auction" method="post">
+    <form th:action="${'/create-auction/' + ownedcard.id}" method="post">
         <label>Amount to sell</label>
         <input type="number" name="amountToSell">
         <label>Price</label>

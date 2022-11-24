@@ -8,6 +8,7 @@ import com.pokemon.service.AuthorizationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -34,12 +35,12 @@ public class AuctionHouseController extends MainController
         return "auction-house";
     }
 
-    @PostMapping("/create-auction")
-    public String createAuction(int amountToSell, double price, OwnedCard ownedcard)
+    @PostMapping("/create-auction/{ownedCardId}")
+    public String createAuction(int amountToSell, double price, @PathVariable int ownedCardId)
     {
         try
         {
-            auctionHouseService.createAuction(amountToSell, price, ownedcard);
+            auctionHouseService.createAuction(amountToSell, price, ownedCardId);
         }
         catch (AuctionException e)
         {
