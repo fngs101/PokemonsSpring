@@ -77,17 +77,6 @@ public class ShopService
         return fullPrice;
     }
 
-    private OwnedCard findDuplicate(String cardName, List<OwnedCard> ownedCards)
-    {
-        for(OwnedCard ownedCard : ownedCards)
-        {
-            if(ownedCard.getCard().getName().equals(cardName))
-            {
-                return ownedCard;
-            }
-        }
-        return null;
-    }
 
     private boolean canUserAffordBuy(int fullPrice, int pokemonCoin)
     {

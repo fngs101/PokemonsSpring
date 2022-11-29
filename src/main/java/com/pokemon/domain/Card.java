@@ -10,14 +10,16 @@ import javax.persistence.OneToOne;
 public class Card
 {
     @Id
+    private String id;
     private String name;
-//TODO BRAĆ Z JSON ZARÓWNO NAME I ID
+
 
     private String url;
     private int price = 10;
 
-    public Card(String name, String url)
+    public Card(String id, String name, String url)
     {
+        this.id = id;
         this.name = name;
         this.url = url;
     }
@@ -40,5 +42,10 @@ public class Card
     public int getPrice()
     {
         return price;
+    }
+
+    public String getId()
+    {
+        return id;
     }
 }
