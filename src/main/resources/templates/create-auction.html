@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <section th:insert="~{template :: head}"></section>
+    <title>Pokémon</title>
+
+</head>
+<body>
+<section th:insert="~{template :: menu}"></section>
+<div class="tab-content">
+    <div id="auction-house">
+        <h1>Create auction</h1>
+    </div>
+</div>
+<div class="cards">
+    <div th:each="ownedcard:${boughtCards}">
+        <div th:text="${ownedcard.card.name}"></div>
+        <img th:src="${ownedcard.card.url}">
+        <form th:action="${'/create-auction/' + ownedcard.id}" method="post">
+            <label>Amount to sell</label>
+            <input type="number" name="amountToSell">
+            <label>Price</label>
+            <input type="number" name="price">
+            <input type="submit" value="Create auction" >
+        </form>
+    </div>
+</div>
+</body>
+</html>

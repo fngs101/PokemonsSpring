@@ -25,12 +25,19 @@ public class AuctionHouseController extends MainController
 
     }
 
-    @GetMapping("/app/auction-house")
-    public String getAuctionPage(Model model)
+    @GetMapping("/app/create-auction")
+    public String getCreateAuctionView(Model model)
     {
 
         List<OwnedCard> boughtCards = auctionHouseService.getAuctionPageContent();
         model.addAttribute("boughtCards", boughtCards);
+
+        return "create-auction";
+    }
+
+    @GetMapping("/app/auction-house")
+    public String getAuctionPage(Model model)
+    {
 
         return "auction-house";
     }
