@@ -52,6 +52,7 @@ public class AuctionHouseController extends MainController
         catch (AuctionException e)
         {
             //dodac message do auction-house view
+            System.out.println("error print - not enough cards to create auction");
         }
 
         return "auction-house";

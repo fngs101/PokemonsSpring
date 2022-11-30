@@ -6,4 +6,9 @@ notka: thymeleaf disabled
 TODO: check
 4. kupowanie z innych aukcji
 TODO: all
+zaczelam od zrobienia nowego template i view do niego - create-auction
+tam teraz laduja obrazki posiadane ktore mozna wystawic
+wystawiam aukcje i jest ok -> trzeba stworzyc view do stworzonej aukcji todo
+jak usunac karte ktora juz nie jest owned tylko trafila do aukcji?
+mialam wczesniej blad tam w controllerze, dodalam Cascade type all, blad zniknal, ale nie usuwa sie
 

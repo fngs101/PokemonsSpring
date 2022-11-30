@@ -13,7 +13,7 @@ public class PokemonCollector
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private int id;
     private String userName;
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private List<OwnedCard> ownedCardList = new ArrayList<>();
     private int pokemonCoin = 10000;
 
