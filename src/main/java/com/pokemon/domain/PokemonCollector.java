@@ -1,6 +1,8 @@
 package com.pokemon.domain;
 
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,7 +15,8 @@ public class PokemonCollector
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private int id;
     private String userName;
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(fetch=FetchType.EAGER)
+    @Cascade(CascadeType.SAVE_UPDATE)
     private List<OwnedCard> ownedCardList = new ArrayList<>();
     private int pokemonCoin = 10000;
 

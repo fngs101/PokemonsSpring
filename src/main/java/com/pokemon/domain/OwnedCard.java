@@ -15,7 +15,7 @@ public class OwnedCard
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Card card;
     private int amount;
 

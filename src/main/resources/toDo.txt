@@ -3,7 +3,11 @@ Plan:
 2. Zrobic wyszarzony button na buy jak nie ma pieniedzy plus message ze go nie stac -> to correct
 notka: thymeleaf disabled
 3. zaciaganie wszystkich kart a nie tylko okreslona ilosc - DONE
-TODO: check
+TODO: check edit: tam error leci screen
+ograniczyc pule zapytan do mniejszej (ThreadPool)
+wznawiac zapytanie ktore sie nie powiodlo x razy lub do skutku
+
+zmiana id obrrazka na to z api + api request todo check
 4. kupowanie z innych aukcji
 TODO: all
 zaczelam od zrobienia nowego template i view do niego - create-auction
@@ -14,4 +18,6 @@ mialam wczesniej blad tam w controllerze, dodalam Cascade type all, blad zniknal
 po stworzeniu aukcji powinno przekierowac na strone stworzonej aukcji
 dalej
 Plan jest taki zeby zrobic tutaj tez kolejny dropdown do view listy dostepnych aukcji i tam bedzie tez nasza
+
+
 

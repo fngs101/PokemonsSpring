@@ -45,8 +45,11 @@ public class AuctionHouseService
         ownedCard.setAmount(amountOfCard - 1);
         if(ownedCard.getAmount() == 0)
         {
-            //todo usunac caly rekord z tabeli? a co jesli dwoch pokemoncollectors bedzie mialo te sama karte? nie brakuje czegos w bazie jak to powiazac z danym collectorem?
-            ownedCardRepository.deleteById(ownedCard.getId());
+            //todo ogarnac czemu nie jest usuwane z OwnedCard mimo ze jest cascade w pokemoncollector, inny typ? (usuwa sie ladnie w tej tabeli joinowej)
+
+            List<OwnedCard> ownedCards = pokemonCollector.getOwnedCardList();
+            ownedCards.remove(ownedCard);
+            pokemonCollectorRepository.save(pokemonCollector);
         }
         else
         {
