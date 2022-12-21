@@ -32,7 +32,7 @@ public class AuctionHouseService
     {
         int id = authorizationService.getPokemonCollectorId();
         PokemonCollector pokemonCollector = pokemonCollectorRepository.findById(id).get();
-        OwnedCard ownedCard = pokemonCollector.getOwnedCardList().get(ownedCardId);
+        OwnedCard ownedCard = ownedCardRepository.findById(ownedCardId).get();
         int amountOfCard = ownedCard.getAmount();
 
         if(amountOfCard < amountToSell)
@@ -45,7 +45,6 @@ public class AuctionHouseService
         ownedCard.setAmount(amountOfCard - 1);
         if(ownedCard.getAmount() == 0)
         {
-            //todo ogarnac czemu nie jest usuwane z OwnedCard mimo ze jest cascade w pokemoncollector, inny typ? (usuwa sie ladnie w tej tabeli joinowej)
 
             List<OwnedCard> ownedCards = pokemonCollector.getOwnedCardList();
             ownedCards.remove(ownedCard);

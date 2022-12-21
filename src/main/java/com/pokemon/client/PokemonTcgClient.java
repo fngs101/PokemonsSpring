@@ -34,7 +34,7 @@ public class PokemonTcgClient
         int amountOfPages = totalCount / pageSize + 1;
 
 
-        for(int i = 1; i <= 2; i++)
+        for(int i = 1; i <= amountOfPages; i++)
         {
             int iCopy = i;
 
