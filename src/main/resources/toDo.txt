@@ -15,6 +15,8 @@ wystawiam aukcje i jest ok -> trzeba stworzyc view do stworzonej aukcji todo
 jak usunac karte ktora juz nie jest owned tylko trafila do aukcji?
 mialam wczesniej blad tam w controllerze, dodalam Cascade type all, blad zniknal, ale nie usuwa sie
 RESOLVED: zdaje sie ze oprhanRemoval pomoglo
+DONE TO CHECK:
+stworzenie strony my auctions ktora wyswietla aukcje danego uzytkownika sprawdzic auctionhouse service, controller, repo i html
 
 po stworzeniu aukcji powinno przekierowac na strone stworzonej aukcji
 dalej

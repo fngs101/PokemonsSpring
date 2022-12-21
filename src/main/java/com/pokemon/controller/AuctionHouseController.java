@@ -1,5 +1,6 @@
 package com.pokemon.controller;
 
+import com.pokemon.domain.Auction;
 import com.pokemon.domain.OwnedCard;
 import com.pokemon.exception.AuctionException;
 import com.pokemon.repository.PokemonCollectorRepository;
@@ -36,18 +37,31 @@ public class AuctionHouseController extends MainController
     }
 
     @GetMapping("/app/auction-house")
-    public String getAuctionPage(Model model)
+    public String getAuctionPage()
     {
 
         return "auction-house";
     }
 
+    @GetMapping("/app/my-auctions")
+    public String getMyAuctionsPage(Model model)
+    {
+        List<Auction> myAuctions = auctionHouseService.getMyAuctionsPageContent();
+        model.addAttribute("auctions", myAuctions);
+        return "my-auctions";
+    }
+
     @PostMapping("/create-auction/{ownedCardId}")
-    public String createAuction(int amountToSell, double price, @PathVariable int ownedCardId)
+    public String createAuction(int amountToSell, double price, @PathVariable int ownedCardId, Model model)
     {
         try
         {
-            auctionHouseService.createAuction(amountToSell, price, ownedCardId);
+            Auction auction = auctionHouseService.createAuction(amountToSell, price, ownedCardId);
+            if(auction != null)
+            {
+                model.addAttribute("auction", auction);
+            }
+
         }
         catch (AuctionException e)
         {
@@ -55,7 +69,7 @@ public class AuctionHouseController extends MainController
             System.out.println("error print - not enough cards to create auction");
         }
 
-        return "auction-house";
+        return "my-auctions";
     }
 
 }

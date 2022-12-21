@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <section th:insert="~{template :: head}"></section>
+  <title>Pokémon</title>
+
+</head>
+<body>
+<section th:insert="~{template :: menu}"></section>
+<div class="tab-content">
+  <div id="auction-house">
+    <p>My cards on auction house</p>
+  </div>
+</div>
+<div class="cards">
+    <div th:each="auction:${auctions}">
+    <div th:text="${auction.card.name}"></div>
+    <img th:src="${auction.card.url}">
+    </div>
+</div>
+</body>
+</html>

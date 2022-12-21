@@ -28,7 +28,7 @@ public class AuctionHouseService
         this.ownedCardRepository = ownedCardRepository;
     }
 
-    public void createAuction(int amountToSell, double price, int ownedCardId) throws AuctionException
+    public Auction createAuction(int amountToSell, double price, int ownedCardId) throws AuctionException
     {
         int id = authorizationService.getPokemonCollectorId();
         PokemonCollector pokemonCollector = pokemonCollectorRepository.findById(id).get();
@@ -55,12 +55,19 @@ public class AuctionHouseService
             ownedCardRepository.save(ownedCard);
         }
 
-        auctionHouseRepository.save(auction);
+        return auctionHouseRepository.save(auction);
     }
 
     public List<OwnedCard> getAuctionPageContent()
     {
         int id = authorizationService.getPokemonCollectorId();
         return pokemonCollectorRepository.findById(id).get().getOwnedCardList();
+    }
+
+    public List<Auction> getMyAuctionsPageContent()
+    {
+        int id = authorizationService.getPokemonCollectorId();
+        List<Auction> auctions =  auctionHouseRepository.findByPokemonCollectorId(id);
+        return auctions;
     }
 }
