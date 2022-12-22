@@ -2,7 +2,7 @@ Plan:
 1. Dodac security
 2. Zrobic wyszarzony button na buy jak nie ma pieniedzy plus message ze go nie stac -> to correct
 notka: thymeleaf disabled
-3. zaciaganie wszystkich kart a nie tylko okreslona ilosc - DONE
+
 
 ograniczyc pule zapytan do mniejszej (ThreadPool)
 wznawiac zapytanie ktore sie nie powiodlo x razy lub do skutku

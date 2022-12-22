@@ -10,8 +10,10 @@ import com.pokemon.request.RegisterRequest;
 import com.pokemon.state.SessionState;
 import groovy.util.logging.Log;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.function.Supplier;
 
 @Service

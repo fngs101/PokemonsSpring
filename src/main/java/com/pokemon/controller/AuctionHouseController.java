@@ -69,7 +69,7 @@ public class AuctionHouseController extends MainController
             System.out.println("error print - not enough cards to create auction");
         }
 
-        return "my-auctions";
+        return "redirect:/app/my-auctions";
     }
 
 }

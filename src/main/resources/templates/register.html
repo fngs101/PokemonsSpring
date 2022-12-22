@@ -10,9 +10,11 @@
         <h1>Register</h1>
         <label>E-mail:</label>
         <input type="email" th:field="${registerRequest.email}" class="input-box">
+        <div th:if="${#fields.hasErrors('registerRequest.email')}" th:errors="${registerRequest.email}">Email error</div>
 
         <label>Password:</label>
         <input type="password" th:field="${registerRequest.password}" class="input-box">
+        <div th:if="${#fields.hasErrors('registerRequest.password')}" th:errors="${registerRequest.password}">Password error</div>
 
         <label>Password repeat:</label>
         <input type="password" th:field="${registerRequest.passwordRepeat}" class="input-box">

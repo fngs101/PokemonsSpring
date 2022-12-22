@@ -1,8 +1,14 @@
 package com.pokemon.request;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class RegisterRequest
 {
+//    @Pattern(regexp = "")
     private String email;
+    @Size(min=6, max=30, message = "Password is too short")
     private String password;
     private String passwordRepeat;
 
