@@ -8,19 +8,9 @@ ograniczyc pule zapytan do mniejszej (ThreadPool)
 wznawiac zapytanie ktore sie nie powiodlo x razy lub do skutku
 
 4. kupowanie z innych aukcji
-TODO: all
-zaczelam od zrobienia nowego template i view do niego - create-auction
-tam teraz laduja obrazki posiadane ktore mozna wystawic
-wystawiam aukcje i jest ok -> trzeba stworzyc view do stworzonej aukcji todo
-jak usunac karte ktora juz nie jest owned tylko trafila do aukcji?
-mialam wczesniej blad tam w controllerze, dodalam Cascade type all, blad zniknal, ale nie usuwa sie
-RESOLVED: zdaje sie ze oprhanRemoval pomoglo
-DONE TO CHECK:
-stworzenie strony my auctions ktora wyswietla aukcje danego uzytkownika sprawdzic auctionhouse service, controller, repo i html
+Modyfikacja todo:
+po stworzeniu aukcji powinno przekierowac na strone create auction
 
-po stworzeniu aukcji powinno przekierowac na strone stworzonej aukcji
-dalej
-Plan jest taki zeby zrobic tutaj tez kolejny dropdown do view listy dostepnych aukcji i tam bedzie tez nasza
 
 
 

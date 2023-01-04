@@ -15,7 +15,6 @@ public class PokemonCollector
     private int id;
     private String userName;
     @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-//    @Cascade(CascadeType.SAVE_UPDATE)
     private List<OwnedCard> ownedCardList = new ArrayList<>();
     private int pokemonCoin = 10000;
 
@@ -24,16 +23,6 @@ public class PokemonCollector
     {
 
     }
-
-//    public void addCards(List<Card> boughtCards)
-//    {
-//        cardList.addAll(boughtCards);
-//    }
-//
-//    public List<Card> getCardList()
-//    {
-//        return cardList;
-//    }
 
     public List<OwnedCard> getOwnedCardList()
     {

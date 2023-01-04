@@ -2,6 +2,9 @@ package com.pokemon.client;
 
 import com.pokemon.domain.Card;
 import com.pokemon.repository.CardRepository;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Recover;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,6 +26,7 @@ public class PokemonTcgClient
     }
 
     @PostConstruct
+    @Retryable(maxAttempts = 2, value=RuntimeException.class, backoff = @Backoff(300))
     public void downloadCards()
     {
         if(cardRepository.count() != 0)
@@ -53,7 +57,11 @@ public class PokemonTcgClient
 
         }
 
+    }
 
-
+    @Recover
+    public String getRecoveryAfterRetry()
+    {
+        return "EXTERNAL API NOT RESPONDING NOW";
     }
 }
