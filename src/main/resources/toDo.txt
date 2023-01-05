@@ -1,8 +1,9 @@
 Plan:
-1. Dodac security
+1. Dodac security - poczytaj
 2. Zrobic wyszarzony button na buy jak nie ma pieniedzy plus message ze go nie stac -> to correct
 notka: thymeleaf disabled
 
+//strona z all cards i filtr na moje tylko (lub filtry na typ pokemona/rzadkosc/pola z json itp)
 
 ograniczyc pule zapytan do mniejszej (ThreadPool)
 wznawiac zapytanie ktore sie nie powiodlo x razy lub do skutku

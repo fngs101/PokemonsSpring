@@ -10,6 +10,8 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 @Component
@@ -26,7 +28,6 @@ public class PokemonTcgClient
     }
 
     @PostConstruct
-    @Retryable(maxAttempts = 2, value=RuntimeException.class, backoff = @Backoff(300))
     public void downloadCards()
     {
         if(cardRepository.count() != 0)
@@ -36,32 +37,19 @@ public class PokemonTcgClient
         RestTemplate restTemplate = new RestTemplate();
 
         int amountOfPages = totalCount / pageSize + 1;
-
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
 
         for(int i = 1; i <= amountOfPages; i++)
         {
-            int iCopy = i;
-
-            Runnable runnable = () ->
-            {
-                List<Card> cardsList = restTemplate.getForObject(URL + "?page=" + iCopy + "&pageSize=" + pageSize, PokemonRequest.class).getData()
-                        .stream()
-                        .map(cardRequest -> new Card(cardRequest.getId(), cardRequest.getName(), cardRequest.getImages().getSmall()))
-                        .collect(Collectors.toList());
-                System.out.println("Finished download for page " + iCopy);
-
-                cardRepository.saveAll(cardsList);
-            };
-            Thread thread = new Thread(runnable);
-            thread.start();
-
+            String url = URL + "?page=" + i + "&pageSize=" + pageSize;
+            Runnable runnable = new CardDownloadTask(restTemplate, cardRepository, url);
+            executorService.execute(runnable);
+//            Thread thread = new Thread(runnable);
+//            thread.start();
         }
+        executorService.shutdown();
+
 
     }
 
-    @Recover
-    public String getRecoveryAfterRetry()
-    {
-        return "EXTERNAL API NOT RESPONDING NOW";
-    }
 }
