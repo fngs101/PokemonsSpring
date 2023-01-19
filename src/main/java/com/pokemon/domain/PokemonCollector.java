@@ -14,7 +14,7 @@ public class PokemonCollector
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private int id;
     private String userName;
-    @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "pokemonCollector")
     private List<OwnedCard> ownedCardList = new ArrayList<>();
     private int pokemonCoin = 10000;
 
@@ -77,6 +77,7 @@ public class PokemonCollector
             if(duplicateCard == null)
             {
                 OwnedCard ownedCard = new OwnedCard( card, 1);
+                ownedCard.setPokemonCollector(this);
                 ownedCardList.add(ownedCard);
             }
             else

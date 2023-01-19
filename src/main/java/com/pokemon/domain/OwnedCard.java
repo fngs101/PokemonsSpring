@@ -18,6 +18,8 @@ public class OwnedCard
     @ManyToOne
     private Card card;
     private int amount;
+    @ManyToOne
+    private PokemonCollector pokemonCollector;
 
     public OwnedCard()
     {
@@ -60,7 +62,17 @@ public class OwnedCard
         this.amount = amount;
     }
 
-   /* public PokemonCollector getPokemonCollector()
+    public PokemonCollector getPokemonCollector()
+    {
+        return pokemonCollector;
+    }
+
+    public void setPokemonCollector(PokemonCollector pokemonCollector)
+    {
+        this.pokemonCollector = pokemonCollector;
+    }
+
+    /* public PokemonCollector getPokemonCollector()
     {
         return pokemonCollector;
     }
